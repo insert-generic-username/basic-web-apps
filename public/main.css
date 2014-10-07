@@ -1,24 +1,28 @@
 html {
   cursor: url(cursor.png),auto;
-  background: url(/Bricksture.png);
-  background-size: cover;
-  background-position: center;
+  background-image: url('Bricksture.png');
 }
 body {
-  color: rgba(150,150,250,.9);
+  color: rgba(100,100,250,.9);
   font-family: Helvetica, Arial, sans-serif;
 }
-
-
+.icarus {
+  border-radius: 5px;
+  border-color: rgba(150,150,250,.9);
+  background-image: url('Bricksture.jpg');
+  background-size: 100%;
+  height: 50px;
+  width: 250px;
+}
 .submit {
-  color: rgba(150,150,250,.9);
+  color: rgba(100,100,250,.9);
   border-radius: 5px;
   background: url(/Button.jpg);
 }
 
 .button {
   float: left;
-  color: rgba(150,150,250,.9);
+  color: rgba(100,100,250,.9);
   border-radius: 5px;
   background: url(/Button.jpg);
 }

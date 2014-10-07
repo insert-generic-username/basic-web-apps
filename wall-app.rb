@@ -27,39 +27,34 @@ get '/reverse' do
 end
 
 post("/messages") do
-  if Message.empty?
-    puts "DON'T GIVE ME AN EMPTY POST, SCUMBAG!!!"
-    redirect to('/')
+  message_body = params["body"]
+  message_time = DateTime.now
+
+  message = Message.create(body: message_body, created_at: message_time)
+
+  if message.saved?
+    redirect("/")
   else
-    message_body = params["body"]
-    message_time = DateTime.now
-
-    message = Message.create(body: message_body, created_at: message_time)
-
-    if message.saved?
-      redirect("/")
-    else
-      erb(:error)
-    end
+    erb(:error)
   end
 end
 
-post "/messages/:id/upvote" do
-  post = Message.where(:id => params[:id])
+post "/messages/:id/upvote" do |message_id|
+  post = Message.get(message_id)
   post.votes += 1
   post.save
   redirect to('/')
 end
 
-post "/messages/:id/downvote" do
-  post = Message.where(:id => params[:id])
+post "/messages/:id/downvote" do |message_id|
+  post = Message.get(message_id)
   post.downvotes += 1
   post.save
   redirect to('/')
 end
 
-post "/messages/:id/delete" do
-  post = Message.where(:id => params[:id])
-  post.delete
+post "/messages/:id/delete" do |message_id|
+  post = Message.get(message_id)
+  post.destroy
   redirect to('/')
 end

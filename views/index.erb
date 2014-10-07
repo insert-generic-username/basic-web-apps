@@ -12,7 +12,7 @@
       <h1>Social Wall</h1>
       <form id="message-form" method="POST" action="/messages">
         <textarea class= "icarus" id="message-body" name="body" placeholder="Enter a message here."></textarea>
-        <button class= "submit" type="submit" value= "Erect (don't be so immature)">Post Message</button>
+        <button class= "submit" type="submit" >Erect Wall</button>
       </form>
       <% if messages.empty? %>
         <h2>Sorry, no messages. :(</h2>
@@ -27,7 +27,7 @@
               <div class="message-timestamp">
                 Posted on <%= message.created_at.strftime("%B %d, %Y at %l:%M%p") %>
               </div>
-               
+                
                 <p>
                   <form action="/messages/<%= message.id %>/delete" method="post">
                     <input class="button" type="submit" value="Demolish">
