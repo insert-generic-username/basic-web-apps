@@ -13,6 +13,16 @@ class Message
   property :downvotes,  Integer,  required: true, default: 0
 end
 
+class Comment
+  include DataMapper::Resource
+ 
+  property :id,         Serial
+  property :body,       Text,     required: true
+  property :created_at, DateTime, required: true
+ 
+  belongs_to :message
+end
+
 DataMapper.finalize()
 DataMapper.auto_upgrade!()
 
@@ -37,6 +47,19 @@ post("/messages") do
   else
     erb(:error)
   end
+end
+
+post("/messages/*/comments") do |message_id|
+  message = Message.get(message_id)
+ 
+  comment = Comment.new
+  comment.body = params[:comment_body]
+  comment.created_at = DateTime.now
+ 
+  message.comments.push(comment)
+  message.save
+ 
+  redirect("/")
 end
 
 post "/messages/:id/upvote" do |message_id|

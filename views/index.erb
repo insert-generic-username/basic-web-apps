@@ -46,6 +46,15 @@
                   </form>
                 </p>
                 <p><strong>Downwalls</strong>:<%= message.downvotes %></p>
+                <div class="message-comments">
+                  <form action="/messages/<%= message.id %>/comments"method="post">
+                    <textarea name="comment_body"></textarea>
+                    <button type="submit">Add Comment</button>
+                </form>
+                <h3>Comments</h3>
+                <% message.comments.each do |comment| %>
+                  <p><%= comment.body %></p>
+                <% end %>
               
             </li>
           <% end %>
