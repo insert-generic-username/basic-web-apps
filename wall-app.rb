@@ -11,6 +11,8 @@ class Message
   property :created_at, DateTime, required: true
   property :votes,      Integer,  required: true, default: 0
   property :downvotes,  Integer,  required: true, default: 0
+  
+  has n,   :comments
 end
 
 class Comment
