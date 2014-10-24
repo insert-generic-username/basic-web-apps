@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Superwallll</title>
-    <link rel="shortcut icon" href="Brickon.jpg" sizes="64x64" type="image/png">
+    <title>Super Adventure</title>
     <meta charset="UTF-8">
 
     <link rel="stylesheet" type="text/css" href="normalize.css">
@@ -10,13 +9,13 @@
   </head>
   <body>
     <div id="page">
-      <h1>Social Wall</h1>
+      <h1>Super Adventure</h1>
       <form id="message-form" method="POST" action="/messages">
         <textarea class= "icarus" id="message-body" name="body" placeholder="Enter a message here."></textarea>
-        <button class= "submit" type="submit" >Erect Wall</button>
+        <button class= "submit" type="submit" >Post Sign</button>
       </form>
       <% if messages.empty? %>
-        <h2>Sorry, no messages. :(</h2>
+        <h2>Sorry, nothing to see here. :(</h2>
       <% else %>
         <h2>Messages</h2>
         <ol class="message-list">
@@ -25,36 +24,12 @@
               <div class="message-body">
                 <%= message.body %>
               </div>
-              <div class="message-timestamp">
-                Posted on <%= message.created_at.strftime("%B %d, %Y at %l:%M%p") %>
-              </div>
                 
                 <p>
                   <form action="/messages/<%= message.id %>/delete" method="post">
                     <input class="submit" type="submit" value="Demolish">
                   </form>
                 </p>
-                <p> 
-                  <form action="/messages/<%= message.id %>/upvote" method="post">
-                    <input class="button" type="submit" value="Upwall!">
-                  </form>
-                </p>
-                <p><strong>Walls</strong>:<%= message.votes %></p>
-                <p>
-                  <form action="/messages/<%= message.id %>/downvote" method="post">
-                    <input class="button" type="submit" value="Downwall!">
-                  </form>
-                </p>
-                <p><strong>Downwalls</strong>:<%= message.downvotes %></p>
-                <div class="message-comments">
-                  <form action="/messages/<%= message.id %>/comments"method="post">
-                    <textarea class="icarus" name="comment_body"></textarea>
-                    <button class="submit" type="submit">Tag Wall</button>
-                </form>
-                <h3>Comments</h3>
-                <% message.comments.each do |comment| %>
-                  <p><%= comment.body %></p>
-                <% end %>
               
             </li>
           <% end %>

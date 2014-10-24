@@ -1,6 +1,6 @@
 html {
-  cursor: url(cursor.png),auto;
-  background-image: url('Question_Block.png');
+  cursor: url(),auto;
+  background-image: url();
 }
 body {
   color: rgba(100,100,250,.9);
@@ -9,7 +9,7 @@ body {
 .icarus {
   border-radius: 5px;
   border-color: rgba(150,150,250,.9);
-  background-image: url('Bricksture.jpg');
+  background-image: url();
   background-size: 100%;
   height: 50px;
   width: 250px;
@@ -17,14 +17,14 @@ body {
 .submit {
   color: rgba(100,100,250,.9);
   border-radius: 5px;
-  background: url(/Button.jpg);
+  background: url();
 }
 
 .button {
   float: left;
   color: rgba(100,100,250,.9);
   border-radius: 5px;
-  background: url(/Button.jpg);
+  background: url();
 }
 #page {
   margin: 0 auto; /* This centers the #page div horizontally */
